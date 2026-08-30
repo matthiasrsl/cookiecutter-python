@@ -1,0 +1,56 @@
+{% if cookiecutter.use_ruff != "yes" and cookiecutter.use_mypy != "yes" and cookiecutter.use_bandit != "yes" and cookiecutter.use_pyscn != "yes" and cookiecutter.use_conventional_commits != "yes" %}
+repos: []
+{% else %}
+repos:
+{% endif %}
+{% if cookiecutter.use_ruff == "yes" %}
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: ruff check
+        entry: uv run ruff check --fix
+        language: system
+        types: [python]
+      - id: ruff-format
+        name: ruff format
+        entry: uv run ruff format
+        language: system
+        types: [python]
+{% endif %}
+{% if cookiecutter.use_mypy == "yes" %}
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: uv run mypy
+        language: system
+        types: [python]
+        pass_filenames: false
+{% endif %}
+{% if cookiecutter.use_bandit == "yes" %}
+  - repo: local
+    hooks:
+      - id: bandit
+        name: bandit
+        entry: uv run bandit -c pyproject.toml -r src
+        language: system
+        types: [python]
+        pass_filenames: false
+{% endif %}
+{% if cookiecutter.use_pyscn == "yes" %}
+  - repo: local
+    hooks:
+      - id: pyscn
+        name: pyscn check
+        entry: uv run pyscn check --select complexity,deadcode,clones src
+        language: system
+        types: [python]
+        pass_filenames: false
+{% endif %}
+{% if cookiecutter.use_conventional_commits == "yes" %}
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.4.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+{% endif %}

@@ -1,0 +1,8 @@
+# pyscn configuration — see https://docs.codescan.dev/configuration/
+# Generated defaults; run `pyscn init` to regenerate a fully commented version.
+
+[complexity]
+max_complexity = 20
+
+[dead_code]
+min_severity = "critical"

@@ -1,0 +1,23 @@
+image: ghcr.io/astral-sh/uv:python{{ cookiecutter.python_version }}-bookworm-slim
+
+stages:
+  - test
+
+test:
+  stage: test
+  script:
+    - uv sync --all-extras --dev
+{% if cookiecutter.use_ruff == "yes" %}
+    - uv run ruff check .
+    - uv run ruff format --check .
+{% endif %}
+{% if cookiecutter.use_mypy == "yes" %}
+    - uv run mypy .
+{% endif %}
+{% if cookiecutter.use_bandit == "yes" %}
+    - uv run bandit -r src
+{% endif %}
+{% if cookiecutter.use_pyscn == "yes" %}
+    - uv run pyscn check src
+{% endif %}
+    - uv run pytest --cov
