@@ -5,17 +5,57 @@
   "author_name": "Your Name",
   "author_email": "you@example.com",
   "project_description": "A short description of the project.",
-  "python_version": ["3.13", "3.12", "3.11"],
-  "project_type": ["data_science", "fastapi", "django"],
-  "django_flavor": ["plain", "drf", "ninja"],
-  "use_docker": ["no", "yes"],
-  "use_ruff": ["yes", "no"],
-  "use_mypy": ["yes", "no"],
-  "use_bandit": ["yes", "no"],
-  "use_pyscn": ["yes", "no"],
-  "use_conventional_commits": ["yes", "no"],
-  "ci_provider": ["github", "gitlab", "none"],
-  "license": ["MIT", "Apache-2.0", "None"],
+  "python_version": [
+    "3.14",
+    "3.13",
+    "3.12",
+    "3.11",
+    "3.10"
+  ],
+  "project_type": [
+    "data_science",
+    "fastapi",
+    "django"
+  ],
+  "django_flavor": [
+    "plain",
+    "drf",
+    "ninja"
+  ],
+  "use_docker": [
+    "no",
+    "yes"
+  ],
+  "use_ruff": [
+    "yes",
+    "no"
+  ],
+  "use_mypy": [
+    "yes",
+    "no"
+  ],
+  "use_bandit": [
+    "yes",
+    "no"
+  ],
+  "use_pyscn": [
+    "yes",
+    "no"
+  ],
+  "use_conventional_commits": [
+    "yes",
+    "no"
+  ],
+  "ci_provider": [
+    "github",
+    "gitlab",
+    "none"
+  ],
+  "license": [
+    "MIT",
+    "Apache-2.0",
+    "None"
+  ],
   "_jinja2_env_vars": {
     "trim_blocks": true,
     "lstrip_blocks": true

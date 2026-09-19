@@ -111,3 +111,13 @@ def test_all_tools_off_omits_tool_references(tmp_path: Path) -> None:
     assert "mypy" not in pre_commit_config
     assert "bandit" not in pre_commit_config
     assert "pyscn" not in pre_commit_config
+
+
+@pytest.mark.parametrize("python_version", ["3.10", "3.11", "3.12", "3.13", "3.14"])
+def test_supported_python_versions_render(tmp_path: Path, python_version: str) -> None:
+    project_dir = bake(tmp_path, python_version=python_version)
+
+    pyproject = (project_dir / "pyproject.toml").read_text()
+    assert f'requires-python = ">={python_version}"' in pyproject
+    assert f'target-version = "py{python_version.replace(".", "")}"' in pyproject
+    assert f'python_version = "{python_version}"' in pyproject
